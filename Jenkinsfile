@@ -133,7 +133,7 @@ pipeline {
                     grep "image:" helm/values.yaml || echo "Pattern not found. Proceeding with replacement."
 
                     # Update helm values.yaml file with the new Docker image tag
-                    sed -i "s|image: us-central1-docker.pkg.dev/.*/docker-repo/hello:.*|image: us-central1-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/docker-repo/hello:${IMAGE_TAG}|" helm/values.yaml
+                    sed -i -E "s|^([[:space:]]*)image: us-central1-docker.pkg.dev/.*/docker-repo/hello:.*|\1image: us-central1-docker.pkg.dev/${GOOGLE_CLOUD_PROJECT}/docker-repo/hello:${IMAGE_TAG}|" helm/values.yaml
 
                     # Print file after updating to confirm changes
                     echo "=== AFTER ==="
