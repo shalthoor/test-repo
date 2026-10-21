@@ -146,7 +146,6 @@ pipeline {
                         # Commit and push changes to the repository
                         git add helm/values.yaml
                         git commit -m "Updated helm values.yaml to version ${IMAGE_TAG}"
-                        #git push @github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git">https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
                         git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
                     fi
                     """
